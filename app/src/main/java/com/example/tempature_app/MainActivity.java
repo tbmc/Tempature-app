@@ -1,5 +1,6 @@
 package com.example.tempature_app;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayMap<String,Integer> param = new ArrayMap<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
         loadAPI();
         loadObserver();
         loadButton();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus){
+            loadAPI();
+        }
     }
 
     private void loadObserver() {
