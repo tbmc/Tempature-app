@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ChunChun-app</string>
+    <string name="preferences">SharedPreference</string>
+    <string name="key_sweat">"sweat</string>
+    <string name="key_couette">couette</string>
+    <string name="key_manteau">manteau</string>
+</resources>
