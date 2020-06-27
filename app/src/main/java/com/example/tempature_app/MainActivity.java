@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void resetLayout(){
         findViewById(R.id.sweat).setVisibility(View.INVISIBLE);
+        findViewById(R.id.hot).setVisibility(View.GONE);
         findViewById(R.id.manteau).setVisibility(View.GONE);
         findViewById(R.id.couette).setVisibility(View.GONE);
     }
