@@ -37,8 +37,15 @@ public class MainActivity extends AppCompatActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus){
+            resetLayout();
             loadAPI();
         }
+    }
+
+    private void resetLayout(){
+        findViewById(R.id.sweat).setVisibility(View.INVISIBLE);
+        findViewById(R.id.manteau).setVisibility(View.GONE);
+        findViewById(R.id.couette).setVisibility(View.GONE);
     }
 
     private void loadObserver() {
@@ -142,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setManteau() {
-        ImageView img = findViewById(R.id.coat);
+        ImageView img = findViewById(R.id.manteau);
         img.setVisibility(View.VISIBLE);
         Log.i("info", "coat");
     }
