@@ -20,4 +20,4 @@ jobs:
               uses: actions/upload-artifact@v2
               with:
                   name: app
-                  path: dist/temperature-app-release.apk
+                  path: .
