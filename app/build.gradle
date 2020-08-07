@@ -30,7 +30,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
 }
 
-signingConfig {
+signingConfigs {
     release {
         storeFile file(RELEASE_STORE_FILE)
         storePassword RELEASE_STORE_PASSWORD
