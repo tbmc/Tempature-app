@@ -18,13 +18,12 @@ jobs:
             - name: Generating debug keystore and SHA1 key
               shell: bash
               run: |
-                  mkdir ~/.android
-                  keytool -genkey -dname "cn=Test test, ou=Meystin, o=Google, l=Lille, c=FR" -keystore ~/.android/debug.keystore -storepass android -alias AndroidDebugKey -keyalg RSA -keysize 4096 -validity 10000 -v
+                  keytool -genkey -dname "cn=Test test, ou=Meystin, o=Google, l=Lille, c=FR" -keystore ./app/debug.keystore -storepass android -alias AndroidDebugKey -keyalg RSA -keysize 4096 -validity 10000 -v
               # https://stackoverflow.com/questions/60929363/how-can-i-generate-an-android-debug-keystore-file-through-github-actions
               # https://stackoverflow.com/questions/3284055/what-should-i-use-for-distinguished-name-in-our-keystore-for-the-android-marke
             - name: Display debug.keystore file
               shell: bash
-              run: keytool -list -v -keystore ~/.android/debug.keystore -alias AndroidDebugKey -storepass android -keypass android
+              run: keytool -list -v -keystore ./app/debug.keystore -alias AndroidDebugKey -storepass android -keypass android
             - name: Build debug APK
               run: bash ./gradlew assembleRelease
             - name: Upload APK
