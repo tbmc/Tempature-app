@@ -5,15 +5,26 @@ on:
 
 jobs:
     apk:
+        # https://stackoverflow.com/questions/18328730/how-to-create-a-release-signed-apk-file-using-gradle
         name: Generate APK
         runs-on: ubuntu-18.04
 
         steps:
             - uses: actions/checkout@v2
             - name: set up JDK 1.8
-              uses: actions/setup-java@v1
+              uses: actions/setup-java@v1.3.0
               with:
-                  java-version: 1.8
+                  java-version: 12.x
+            - name: Generating debug keystore and SHA1 key
+              shell: bash
+              run: |
+                  mkdir ~/.android
+                  keytool -genkey -dname "cn=Test test, ou=Meystin, o=Google, l=Lille, c=FR" -keystore ~/.android/debug.keystore -storepass android -alias AndroidDebugKey -keyalg RSA -keysize 4096 -validity 10000 -v
+              # https://stackoverflow.com/questions/60929363/how-can-i-generate-an-android-debug-keystore-file-through-github-actions
+              # https://stackoverflow.com/questions/3284055/what-should-i-use-for-distinguished-name-in-our-keystore-for-the-android-marke
+            - name: Display debug.keystore file
+              shell: bash
+              run: keytool -list -v- keystore ~/.android/debug.keystore -alias AndroidDebugKey -storepass android -keypass android
             - name: Build debug APK
               run: bash ./gradlew assembleRelease
             - name: Upload APK

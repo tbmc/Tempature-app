@@ -25,3 +25,21 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+signingConfig {
+    release {
+        storeFile file(~/.android/debug.keystore)
+        storePassword android
+        keyAlias AndroidDebugKey
+        keyPassword android
+
+        v1SigningEnabled true
+        v2SigningENabled true
+    }
+}
+
+buildTypes {
+    release {
+        signingConfig signingConfigs.release
+    }
+}
