@@ -20,7 +20,6 @@ android {
             keyPassword RELEASE_KEY_PASSWORD
 
             v1SigningEnabled true
-            v2SigningENabled true
         }
     }
 
