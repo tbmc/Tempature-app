@@ -24,7 +24,7 @@ jobs:
               # https://stackoverflow.com/questions/3284055/what-should-i-use-for-distinguished-name-in-our-keystore-for-the-android-marke
             - name: Display debug.keystore file
               shell: bash
-              run: keytool -list -v- keystore ~/.android/debug.keystore -alias AndroidDebugKey -storepass android -keypass android
+              run: keytool -list -v -keystore ~/.android/debug.keystore -alias AndroidDebugKey -storepass android -keypass android
             - name: Build debug APK
               run: bash ./gradlew assembleRelease
             - name: Upload APK
